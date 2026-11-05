@@ -1,0 +1,20 @@
+{
+  "name": "diffie-hellman-poc",
+  "version": "1.0.0",
+  "description": "A proof of concept I made of how the Diffie-Hellman key exchange works under the hood.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [
+    "diffie-hellman",
+    "cryptography",
+    "key-exchange",
+    "bigint",
+    "educational"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=14.17.0"
+  }
+}
