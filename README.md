@@ -1,9 +1,9 @@
 
-# Diffie–Hellman Key Exchange — Proof of Concept
+# Diffie–Hellman Key Exchange => Proof of Concept
 
 A proof of concept I made of how the Diffie–Hellman key exchange works under the hood.
 
-⚠️ Educational only. Not for production use. I used tiny 3-bit primes so I could
+⚠️ Educational only. Not for production use. I used tiny 23-bit primes so I could
 actually see the math happen. Real TLS uses 2048+ bit primes.
 
 ---
@@ -11,7 +11,7 @@ actually see the math happen. Real TLS uses 2048+ bit primes.
 ## Why I made this
 
 I wanted to understand how two devices can agree on a secret key over a public
-channel without ever sending the key itself. Reading about it wasn't enough —
+channel without ever sending the key itself. Reading about it wasn't enough -
 I had to build it and watch the numbers.
 
 So I made two `Device` objects, gave them a shared prime and base, and let them
@@ -23,21 +23,21 @@ do the exchange step by step.
 
 Both sides agree on two public numbers:
 
-- `p` — a prime
-- `g` — a base
+- `p` - a prime
+- `g` - a base
 
 Each side picks a secret (`a` and `b`), computes a public value:
 
 ```
-A = g^a mod p
+R = g^r mod p
 B = g^b mod p
 ```
 
-They swap `A` and `B`, then each computes:
+They swap `R` and `B`, then each computes:
 
 ```
-S = B^a mod p   (Alice)
-S = A^b mod p   (Bob)
+S = B^a mod p   (Rady)
+S = R^b mod p   (Bob)
 ```
 
 Both get the same `S`. That's the shared secret.
@@ -48,9 +48,9 @@ Both get the same `S`. That's the shared secret.
 
 Three stages:
 
-1. **Agree on public values** — a 3-bit prime and a random base.
-2. **Generate public keys** — each device picks a secret and computes its public key.
-3. **Derive the shared secret** — each device combines its own secret with the
+1. **Agree on public values** - a 3-bit prime and a random base.
+2. **Generate public keys** - each device picks a secret and computes its public key.
+3. **Derive the shared secret** - each device combines its own secret with the
    other's public key.
 
 ```bash
@@ -120,7 +120,7 @@ function modPow(base, exp, mod) {
 ### 2. Secrets and bases of `1` broke everything
 
 I originally used `crypto.randomInt(1, ...)`, which let a secret or base be `1`.
-A secret of `1` makes the public key `g^1 = g` — it leaks the base. A base of `1`
+A secret of `1` makes the public key `g^1 = g` - it leaks the base. A base of `1`
 makes every public key `1`. Both silently produce a "working" but useless key.
 
 Fix: start the range at `2`.
@@ -133,7 +133,7 @@ const base  = BigInt(crypto.randomInt(2, Number(prime) - 1));
 ### 3. `Math.random()` is not safe for this
 
 I reached for `Math.random()` first because it was familiar. But it's
-predictable — fine for animations, not for anything security-related.
+predictable - fine for animations, not for anything security-related.
 
 Fix: use `crypto.randomInt()`, which is cryptographically secure.
 
@@ -148,7 +148,7 @@ generator.
 
 I expected `crypto.generatePrimeSync(3, ...)` to return `3`, `5`, or `7`. It
 only ever returns `7`. Turns out OpenSSL forces the top two bits of the prime
-to `1` to guarantee the bit length — so for 3 bits, the only candidate is
+to `1` to guarantee the bit length - so for 3 bits, the only candidate is
 `111` = `7`.
 
 ---
@@ -158,7 +158,7 @@ to `1` to guarantee the bit length — so for 3 bits, the only candidate is
 - Use **2048+ bit primes** (or a named group like `ffdhe2048`).
 - Use **ephemeral keys** per session for forward secrecy.
 - Prefer **ECDH** for smaller, faster keys.
-- Never hand-roll crypto in production — use vetted libraries.
+- Never hand-roll crypto in production - use vetted libraries.
 
 ---
 
