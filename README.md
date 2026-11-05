@@ -3,8 +3,7 @@
 
 A proof of concept I made of how the Diffie–Hellman key exchange works under the hood.
 
-⚠️ Educational only. Not for production use. I used tiny 23-bit primes so I could
-actually see the math happen. Real TLS uses 2048+ bit primes.
+I used tiny 23-bit primes so I could actually see the math happen. Real TLS uses 2048+ bit primes.
 
 ---
 
