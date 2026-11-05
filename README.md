@@ -1,5 +1,5 @@
 
-# Diffie–Hellman Key Exchange => Proof of Concept
+# Diffie–Hellman Key Exchange Proof of Concept
 
 A proof of concept I made of how the Diffie–Hellman key exchange works under the hood.
 
