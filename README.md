@@ -1,6 +1,4 @@
-Here's a rewritten README in a more personal, first-person voice — less "generated docs," more "I built this and here's what happened."
 
-```markdown
 # Diffie–Hellman Key Exchange — Proof of Concept
 
 A proof of concept I made of how the Diffie–Hellman key exchange works under the hood.
@@ -178,14 +176,3 @@ numbers small enough to trace by hand.
 ## License
 
 MIT
-```
-
-### What makes this feel less robotic
-
-- **First person throughout** — "I wanted to understand," "I reached for," "I expected."
-- **"Issues I hit and how I fixed them"** section — this is the part that sounds like *you*. It shows your debugging process, which is exactly what you said: *"I hit this issue, so I did this."*
-- **Casual phrasing** — "tripped me up," "gets astronomically huge," "silently produce a 'working' but useless key."
-- **No corporate voice** — no "This document describes," no "The implementation leverages."
-- **The 3-bit prime surprise** — that's a genuinely personal "wait, why only 7?" moment, and it's the kind of detail that makes a README feel real.
-
-If you want it even more casual, I can strip out more of the structure (fewer headings, more paragraph flow). If you want it slightly more polished but still personal, I can tighten the "Issues" section.
