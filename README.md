@@ -159,16 +159,7 @@ to `1` to guarantee the bit length - so for 3 bits, the only candidate is
 - Prefer **ECDH** for smaller, faster keys.
 - Never hand-roll crypto in production - use vetted libraries.
 
----
 
-## What this is not
-
-- Not a TLS implementation
-- Not production-ready
-- Not secure with 3-bit primes (the key space is tiny)
-
-It's a learning tool. I built it so I could see the algorithm working with
-numbers small enough to trace by hand.
 
 ---
 
