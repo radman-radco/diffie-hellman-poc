@@ -27,7 +27,7 @@ class Device{
 
 const prime = crypto.generatePrimeSync(prime_bit_length, { bigint: true });
 const base = BigInt(crypto.randomInt(1, Number(prime) - 1))
-console.log(`==============================================\n  Both devices agreed on these public values:\n          prime:${prime} ,  base:${base}\n==============================================\n`)
+console.log(`==============================================\n  Both devices agreed on these public values:\n          prime:${prime} ,  base:${base}\n=============================================\n`)
 
 console.log("========================== STAGE 1 ===========================")
 const client = new Device("client", base, prime)
