@@ -2,7 +2,8 @@ const crypto = require('crypto');
 
 console.log("** Diffie-Hellman key exchange proof of concept **")
 const prime_bit_length = 15
-// Generate a 16-bit prime and return it as a BigInt
+
+// Generate a n-bit prime and return it as a BigInt
 class Device{
   constructor(name, base, p){ 
     this.name = name
